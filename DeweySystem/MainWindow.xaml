@@ -1,0 +1,596 @@
+﻿<Window x:Class="DeweySystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeweySystem" 
+        xmlns:viewModel="clr-namespace:DeweySystem.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Topmost="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Title="Dewey System" Height="550" Width="850">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+
+    <Window.Resources>
+
+
+        <!--// (Design Pro, 2020), Full Reference in ReferenceList //-->
+        <!--// Toggle Button Style Template //-->
+
+        <ImageBrush x:Key="tb_mouse_over"
+                    ImageSource="Images/menuBar.png" />
+
+
+        <!--// (Design Pro, 2020), Full Reference in ReferenceList //-->
+        <!--// Text Font Style //-->
+        <Style x:Key="font_style" TargetType="TextBlock">
+
+            <Setter Property="FontFamily"
+                    Value="Fonts/Roboto-Light.ttf #Roboto" />
+
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+
+            <Setter Property="Foreground"
+                    Value="White" />
+
+            <Setter Property="FontSize"
+                    Value="20" />
+
+        </Style>
+
+        <!--// (Design Pro, 2020), Full Reference in ReferenceList //-->
+        <!--// Tooltip Style Template //-->
+        <Style TargetType="ToolTip" x:Key="tt_style">
+
+            <Setter Property="Placement" Value="Right" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Margin" Value="20,0,0,0" />
+            <Setter Property="Background" Value="#4A5668" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="PlacementRectangle" Value="60,0,0,0" />
+            <Setter Property="HorizontalOffset" Value="15" />
+            <Setter Property="VerticalOffset" Value="6" />
+            <Setter Property="HasDropShadow" Value="True" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+
+
+        </Style>
+
+        <!--// (Design Pro, 2020), Full Reference in ReferenceList //-->
+        <!--// Submit bitton Style Template //-->
+        <Style x:Key="SomeButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!--// (Design Pro, 2020), Full Reference in ReferenceList //-->
+        <!--// Button Toggle Style Template //-->
+        <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+
+                        <Border x:Name="border"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+
+
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}" />
+
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}" />
+
+                            </Trigger>
+
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+
+                                <Setter Property="Background"
+                                        TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}" />
+
+                                <Setter Property="BorderBrush"
+                                        TargetName="border"
+                                        Value="{StaticResource tb_mouse_over}" />
+
+                            </Trigger>
+
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Border Background="#272537"
+            CornerRadius="20">
+
+
+        <Grid >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition  />
+            </Grid.ColumnDefinitions>
+
+
+            <Grid x:Name="BG">
+
+
+                <Grid.Background>
+
+                    <ImageBrush x:Name="img_bg" />
+
+                </Grid.Background>
+
+
+            </Grid>
+
+
+            <ContentControl 
+                            Grid.Column="1" 
+                            Margin="10"
+                            Content="{Binding CurrentView}" />
+
+            <Border Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    x:Name="nav_pnl"
+                    HorizontalAlignment="Left"
+                    Width="70"
+                    Background="#2E333A"
+                    CornerRadius="20,0,0,20">
+
+
+
+                <StackPanel x:Name="st_pnl">
+
+                    <!--// grid for the menu toggle button //-->
+
+                    <Grid Height="90">
+
+                        <!--// Menu Title Text //-->
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Margin="73,-20,0,0"
+                                   Text="M E N U"
+                                   Foreground="White"
+                                   FontSize="22"
+                                   Background="Transparent"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Style="{StaticResource font_style}">
+                            
+                            <!--// Shadow Effect //-->
+
+                            <TextBlock.Effect>
+
+                                <DropShadowEffect BlurRadius="10"
+                                                  ShadowDepth="1"
+                                                  Direction="-90"
+                                                  Color="White" />
+
+                            </TextBlock.Effect>
+
+                        </TextBlock>
+
+                        <!--// Toggle Button //-->
+
+                        <ToggleButton x:Name="Tg_Btn"
+                                      Grid.Column="0"
+                                      VerticalAlignment="Top"
+                                      HorizontalAlignment="Left"
+                                      Margin="14,20,0,0"
+                                      Height="30"
+                                      Width="30"
+                                      BorderThickness="0"
+                                      Style="{StaticResource tb_style}" >
+
+                            <!--// Toggle Button Background //-->
+
+                            <ToggleButton.Background>
+
+                                <ImageBrush ImageSource="images/menuBar.png"
+                                            Stretch="None"/>
+
+                            </ToggleButton.Background>
+
+                            <!--// Toggle Button - Checked, Unchecked events //-->
+
+                            <ToggleButton.Triggers>
+
+                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard x:Name="HideStackPanel1">
+
+                                            <DoubleAnimation Storyboard.TargetName="nav_pnl"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="250" To="65"
+                                                             Duration="0:0:0.2">
+
+
+
+
+                                            </DoubleAnimation>
+
+                                        </Storyboard>
+
+                                    </BeginStoryboard>
+
+                                </EventTrigger>
+
+                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+
+                                    <BeginStoryboard>
+
+                                        <Storyboard x:Name="ShowStackPanel">
+
+                                            <DoubleAnimation Storyboard.TargetName="nav_pnl"
+                                                             Storyboard.TargetProperty="Width"
+                                                             BeginTime="0:0:0"
+                                                             From="65" To="250"
+                                                             Duration="0:0:0.3">
+
+
+
+                                            </DoubleAnimation>
+
+                                        </Storyboard>
+
+                                    </BeginStoryboard>
+
+                                </EventTrigger>
+
+                            </ToggleButton.Triggers>
+
+                        </ToggleButton>
+
+                    </Grid>
+
+                    <!--// (Design Pro, 2020), Full Reference in ReferenceList //-->
+                    <!--// ListView with menu List iTems //-->
+
+                    <ListView x:Name="LV"
+                              Background="Transparent"
+                              BorderBrush="Transparent"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+
+                        <!--// AddModule //-->
+
+                        <Button       HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"
+                                      
+                                      Name="HomeButton"
+                                      Command="{Binding ReplaceBookViewCommand}"
+                                      Background="Transparent"
+                                      Style="{StaticResource SomeButtonStyle}"
+                                      BorderThickness="0">
+
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="images/sort.png"
+                                       Stretch="Fill"
+                                       Margin="12,0,0,0" />
+
+                                <TextBlock Text="Replace Book"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}" />
+
+
+                            </StackPanel>
+
+                            <!--// ToolTip //-->
+
+                            <Button.ToolTip>
+
+                                <ToolTip x:Name="tt_RBV"
+                                         Content="Replace Book"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </Button.ToolTip>
+
+
+                        </Button>
+
+                        <!--// Track Record //-->
+                        <Button       HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"
+                                      
+                                      Name="TrackRecord"
+                                      Command="{Binding IdentifyAreaViewCommand}"
+                                      Background="Transparent"
+                                      Style="{StaticResource SomeButtonStyle}"
+                                      BorderThickness="0" IsEnabled="False">
+
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="images/puzzle.png"
+                                       Stretch="Fill"
+                                       Margin="08,-5,0,-5" />
+
+                                <TextBlock Text="Identitfy Area"
+                                           Margin="20,0,0,0"
+                                           Style="{StaticResource font_style}" />
+
+
+                            </StackPanel>
+
+                            <!--// ToolTip //-->
+
+                            <Button.ToolTip>
+
+                                <ToolTip x:Name="tt_IAV"
+                                         Content="Identity Area"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </Button.ToolTip>
+
+
+                        </Button>
+
+                        <!--// Report//-->
+                        <Button       HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"
+                                     
+                                      Name="ReportButton"
+                                      Command="{Binding FindingCallNumberCommand}"
+                                      Background="Transparent"
+                                      Style="{StaticResource SomeButtonStyle}"
+                                      BorderThickness="0" IsEnabled="False">
+
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="images/search.png"
+                                       Stretch="Fill"
+                                       Margin="8,0,0,-5" />
+
+                                <TextBlock Text="Find Call Number"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}" />
+
+
+                            </StackPanel>
+
+                            <!--// ToolTip //-->
+
+                            <Button.ToolTip>
+
+                                <ToolTip x:Name="tt_FCN"
+                                         Content="Find Call Numbers"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </Button.ToolTip>
+
+
+                        </Button>
+                        <Button       HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"
+                                     
+                                      Name="ProgressManager"
+                                      Command="{Binding ProgressBarManagerCommand}"
+                                      Background="Transparent"
+                                      Style="{StaticResource SomeButtonStyle}"
+                                      BorderThickness="0">
+
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="images/growth.png"
+                                       Stretch="Fill"
+                                       Margin="12,0,0,0" />
+
+                                <TextBlock Text="Progress Manager"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}" />
+
+
+                            </StackPanel>
+
+                            <!--// ToolTip //-->
+
+                            <Button.ToolTip>
+
+                                <ToolTip x:Name="tt_BMM"
+                                         Content="Progress Manager"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </Button.ToolTip>
+
+
+                        </Button>
+
+                        <!--// BUTTONS CREATED TO FILL SPACE //-->
+                        <Button IsEnabled="False"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                BorderBrush="Transparent" 
+                                Visibility="Hidden"/>
+                        <Button IsEnabled="False"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                BorderBrush="Transparent" 
+                                Visibility="Hidden"/>
+                        <Button IsEnabled="False"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                BorderBrush="Transparent" 
+                                Visibility="Hidden"/>
+                        <Button IsEnabled="False"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                BorderBrush="Transparent" 
+                                Visibility="Hidden"/>
+
+                        <!--// ^^ BUTTONS CREATED ABOVE TO FILL SPACE ^^ //-->
+
+
+                        <Button HorizontalAlignment="Left"
+                                      Margin="0,0,0,15"
+                                      
+                                      Name="LogOut"
+                                      Background="Transparent"
+                                      Style="{StaticResource SomeButtonStyle}"
+                                      BorderThickness="0" VerticalAlignment="Stretch" Click="Click_ButtonExit" >
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230" >
+
+                                <Image Source="images/exit.png"
+                                       Stretch="Fill"
+                                       Margin="12,0,0,0" />
+
+                                <TextBlock Text="Log Out"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}" />
+
+
+                            </StackPanel>
+                            
+
+                            <!--// ToolTip //-->
+
+                            <Button.ToolTip>
+
+                                <ToolTip x:Name="tt_logout"
+                                         Content="Log Out"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </Button.ToolTip>
+
+
+                        </Button>
+
+
+
+                        <!--// List View Design/Style //-->
+                        <ListView.ItemContainerStyle>
+
+                            <Style TargetType="ListViewItem">
+
+                                <Setter Property="Template">
+
+                                    <Setter.Value>
+
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+
+                                            <Border x:Name="Bd"
+                                                    Height="50"
+                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}"
+                                                    Padding="{TemplateBinding Padding}"
+                                                    SnapsToDevicePixels="True">
+
+                                                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalAlignment}" />
+
+
+                                            </Border>
+
+                                            <ControlTemplate.Triggers>
+
+                                                <MultiTrigger>
+
+                                                    <MultiTrigger.Conditions>
+
+                                                        <Condition Property="IsMouseOver" Value="True" />
+
+
+                                                    </MultiTrigger.Conditions>
+
+                                                    <Setter Property="Background"
+                                                            TargetName="Bd"
+                                                            Value="#404D5B" />
+
+                                                    <Setter Property="BorderBrush"
+                                                            TargetName="Bd"
+                                                            Value="#404D5B" />
+
+                                                </MultiTrigger>
+
+                                            </ControlTemplate.Triggers>
+
+
+                                        </ControlTemplate>
+
+                                    </Setter.Value>
+
+                                </Setter>
+
+                            </Style>
+
+                        </ListView.ItemContainerStyle>
+
+
+                    </ListView>
+
+                </StackPanel>
+
+
+
+            </Border>
+
+
+        </Grid>
+
+
+
+    </Border>
+</Window>

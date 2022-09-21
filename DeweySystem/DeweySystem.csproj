@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\exit.png" />
+    <None Remove="Images\growth.png" />
+    <None Remove="Images\menuBar.png" />
+    <None Remove="Images\puzzle.png" />
+    <None Remove="Images\recycle.png" />
+    <None Remove="Images\search-alt.png" />
+    <None Remove="Images\search.png" />
+    <None Remove="Images\sort.png" />
+    <None Remove="Images\welcome.png" />
+    <None Remove="MVVM\View\ViewImages\down-arrow.png" />
+    <None Remove="MVVM\View\ViewImages\reset.png" />
+    <None Remove="MVVM\View\ViewImages\submit.png" />
+    <None Remove="MVVM\View\ViewImages\up-arrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\exit.png" />
+    <Resource Include="Images\growth.png" />
+    <Resource Include="Images\puzzle.png" />
+    <Resource Include="Images\recycle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\menuBar.png" />
+    <Resource Include="Images\search-alt.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\sort.png" />
+    <Resource Include="MVVM\View\ViewImages\down-arrow.png" />
+    <Resource Include="MVVM\View\ViewImages\reset.png" />
+    <Resource Include="MVVM\View\ViewImages\submit.png" />
+    <Resource Include="MVVM\View\ViewImages\up-arrow.png" />
+    <Resource Include="MVVM\View\ViewImages\welcome.png" />
+  </ItemGroup>
+
+</Project>

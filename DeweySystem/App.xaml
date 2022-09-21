@@ -1,0 +1,40 @@
+﻿<Application x:Class="DeweySystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DeweySystem"
+             xmlns:viewModel="clr-namespace:DeweySystem.MVVM.ViewModel"
+             xmlns:view="clr-namespace:DeweySystem.MVVM.View"
+             StartupUri="MainWindow.xaml"
+             >
+    <Application.Resources>
+
+        <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+
+            <view:welcomePage/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:viewModelReplaceBook}">
+
+            <view:replaceBook/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:viewModelIdentifyArea}">
+
+            <view:IdentifyArea/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:viewModelFindingCallNumbers}">
+
+            <view:findingCallNumbers/>
+
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModel:ProgressBarManager}">
+            <view:ProgressManager/>
+        </DataTemplate>
+
+    </Application.Resources>
+</Application>

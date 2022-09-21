@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="DeweySystem.MVVM.View.welcomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            d:DesignHeight="570" d:DesignWidth="830"
+             Background="#272537">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" Margin="265,180,0,374" TextWrapping="Wrap" Text="-Welcome To-" Grid.Column="1">
+            <TextBlock.RenderTransform>
+                <TranslateTransform/>
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="0:0:1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                  Value="50">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BounceEase />
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+
+        <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" Margin="73,241,0,298" TextWrapping="Wrap" Text="-The Dewey Decimal System Application-" Grid.ColumnSpan="2" Grid.Column="1">
+            <TextBlock.RenderTransform>
+                <TranslateTransform/>
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="0:0:1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                  Value="50">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BounceEase />
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+
+        <TextBlock Foreground="White" FontSize="25" FontWeight="Bold" HorizontalAlignment="Left" Margin="139,340,0,211" TextWrapping="Wrap" Text="( Select Any Menu Item To Get Started ! )" Grid.Column="1">
+            <TextBlock.RenderTransform>
+                <TranslateTransform/>
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="0:0:1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                  Value="50">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BounceEase />
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+
+        <Image HorizontalAlignment="Left" Height="150" Margin="274,10,0,0" VerticalAlignment="Top" Width="150" Source="ViewImages/welcome.png" Grid.Column="1">
+
+            <Image.RenderTransform>
+                <TranslateTransform/>
+            </Image.RenderTransform>
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="0:0:1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                  Value="50">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BounceEase />
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+
+    </Grid>
+</UserControl>
