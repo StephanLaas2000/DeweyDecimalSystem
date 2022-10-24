@@ -1,22 +1,11 @@
 ﻿using DeweySystem.Core;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 
 namespace DeweySystem.MVVM.View
@@ -31,7 +20,7 @@ namespace DeweySystem.MVVM.View
         List<string> ListBoxRecValues = new List<string>();
 
         ListBox dragSource = null;
-       
+
         public replaceBook()
         {
             InitializeComponent();
@@ -78,7 +67,7 @@ namespace DeweySystem.MVVM.View
                 lbSend.Items.Add(ListHandler.shuffled[i]).ToString();
             }
         }
-     
+
         //This method handles the first listbox left button click by the user
         private void lbSend_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -135,7 +124,7 @@ namespace DeweySystem.MVVM.View
         private void Button_Up(object sender, RoutedEventArgs e)
         {
             ListBoxRecValues = new List<string>();
-         
+
             foreach (string item in lbRec.Items)
             {
                 ListBoxRecValues.Add(item);
@@ -153,9 +142,9 @@ namespace DeweySystem.MVVM.View
                 {
                     lbRec.Items.Add(item.ToString());
                 }
-                
+
             }
-           
+
         }
 
         //The button_down method is the same as the button_up method but we add a value of 1 to the index to move the selected value down
@@ -229,7 +218,7 @@ namespace DeweySystem.MVVM.View
             {
                 MessageBox.Show("Please enter all 10 values");
             }
-                     
+
         }
 
         //The resetUi method will refresh the whole user interface

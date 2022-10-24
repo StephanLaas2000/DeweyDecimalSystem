@@ -5,9 +5,331 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DeweySystem.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="570" d:DesignWidth="830"
-             Background="white">
+             d:DesignHeight="570" d:DesignWidth="850"
+             Background="#272537"
+             >
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="roundedTextbox" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border CornerRadius="5" x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <SolidColorBrush x:Key="ListBox.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="ListBox.Static.Border" Color="#FFABADB3"/>
+        <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="#FFD9D9D9"/>
+        <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
+            <Setter Property="Background" Value="{StaticResource ListBox.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ListBox.Static.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border CornerRadius="5" x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="1" SnapsToDevicePixels="true">
+                            <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </ScrollViewer>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsGrouping" Value="true"/>
+                                    <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="ProgressBar.Progress" Color="	#6082B6"/>
+        <SolidColorBrush x:Key="ProgressBar.Background" Color="BlueViolet"/>
+        <SolidColorBrush x:Key="ProgressBar.Border" Color="#FFBCBCBC"/>
+
+        <Style x:Key="CornerRadius" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="{StaticResource ProgressBar.Progress}"/>
+            <Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ProgressBar.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid x:Name="TemplateRoot">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Determinate"/>
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                            </PointAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
+                            <Rectangle x:Name="PART_Track"/>
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
+                                <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" RadiusX="10" RadiusY="10"/>
+                                <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5" RadiusX="10" RadiusY="10">
+                                    <Rectangle.RenderTransform>
+                                        <RotateTransform Angle="-90"/>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform" TargetName="TemplateRoot">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsIndeterminate" Value="true">
+                                <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+        <Style x:Key="ColorTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="TextTrimming" Value="None"/>
+        </Style>
+
+        <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Background" Value="#505050"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" CornerRadius="10"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <!--<Setter Property="Margin" Value="3"/>-->
+
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border x:Name="rectangle" Background="Black" Height="{TemplateBinding Height}" SnapsToDevicePixels="True" Width="{TemplateBinding Width}" CornerRadius="8"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="rectangle" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsDragging" Value="true">
+                                <Setter Property="Background" TargetName="rectangle" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox Style="{DynamicResource ListBoxStyle1}" FontSize="15" FontWeight="Bold" Padding="5" x:Name="lbColumn1" Width="200" Height="195" Margin="265,0,415,181" BorderThickness="5" BorderBrush="DarkCyan">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="8"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+        </ListBox>
+
+
+        <ListBox Style="{DynamicResource ListBoxStyle1}" Padding="10" FontWeight="Bold" x:Name="lbColumn2" Width="200" Height="290" Margin="518,99,162,181" BorderThickness="5" BorderBrush="DarkCyan">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="8"/>
+                    <!--<Setter Property="HorizontalAlignment" Value="Center"/>-->
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <!--BREAK-->
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex1" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex2" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex3" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex4" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex5" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex6" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+        <TextBox PreviewTextInput="NumberValidationTextBox" Style="{DynamicResource roundedTextbox}" x:Name="txbIndex7" Padding="5" FontWeight="bold" HorizontalAlignment="Left" Margin="750,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" Height="28" MaxLength="1"/>
+
+        <!--BREAK-->
+        <TextBlock HorizontalAlignment="Left" Margin="230,120,0,0" TextWrapping="Wrap" Text="1" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="230,155,0,0" TextWrapping="Wrap" Text="2" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="230,195,0,0" TextWrapping="Wrap" Text="3" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="230,230,0,0" TextWrapping="Wrap" Text="4" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+
+        <!--BREAK-->
+        <TextBlock HorizontalAlignment="Left" Margin="493,120,0,0" TextWrapping="Wrap" Text="A" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="493,154,0,0" TextWrapping="Wrap" Text="B" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="493,188,0,0" TextWrapping="Wrap" Text="C" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="493,221,0,0" TextWrapping="Wrap" Text="D" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="493,256,0,0" TextWrapping="Wrap" Text="E" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="493,290,0,0" TextWrapping="Wrap" Text="F" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="493,326,0,0" TextWrapping="Wrap" Text="G" Foreground="White" FontSize="18" FontWeight="Bold" VerticalAlignment="Top"/>
+
+
+        <TextBlock Foreground="White" Style="{DynamicResource ColorTextBlock}" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" Margin="290,-18,0,557" TextWrapping="Wrap" Text="Identifying areas">
+            <TextBlock.RenderTransform>
+                <TranslateTransform/>
+            </TextBlock.RenderTransform>
+            <TextBlock.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="0:0:1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                  Value="20">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BounceEase />
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </TextBlock.Triggers>
+        </TextBlock>
+
+        <Button FontSize="15" FontWeight="Bold" Width="60" Height="60" Background="#272537" BorderThickness="0" HorizontalAlignment="Left" Margin="300,430,0,0" VerticalAlignment="Top" Click="Button_reset">
+            <Image Height="60" Width="60" Source="ViewImages/reset.png"  Stretch="Fill"/>
+        </Button>
+
+        <TextBlock HorizontalAlignment="Left" Margin="746,85,0,0" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" Text="Hint" Foreground="white" VerticalAlignment="Top" Width="33">
+            <TextBlock.ToolTip>
+                <ToolTip FontWeight="Bold" FontSize="15" Content="Enter the corresponding number into the squares that match the values inside the second large box"/>
+            </TextBlock.ToolTip>
+        </TextBlock>
+
+        <Button x:Name="btnSubmit" FontSize="15" FontWeight="Bold" Width="65" Height="60" Background="#272537" BorderThickness="0" HorizontalAlignment="Left" Margin="570,440,0,0" VerticalAlignment="Top" Click="btnSubmit_Click">
+            <Image Height="60" Width="60" Source="ViewImages/submit.png"  Stretch="Fill"/>
+        </Button>
+
+        <ProgressBar Maximum="5" Style="{DynamicResource CornerRadius}" BorderBrush="Black" x:Name="pbCorrectAnswerBarIdentifyArea" HorizontalAlignment="Left" Height="47" Margin="-10,250,0,0" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.5,0">
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+            <ProgressBar.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard RepeatBehavior="0:0:1">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                                <EasingDoubleKeyFrame KeyTime="0:0:1"
+                                                  Value="-200">
+                                    <EasingDoubleKeyFrame.EasingFunction>
+                                        <BounceEase />
+                                    </EasingDoubleKeyFrame.EasingFunction>
+                                </EasingDoubleKeyFrame>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ProgressBar.Triggers>
+        </ProgressBar>
+
+        <TextBlock Foreground="White" Style="{DynamicResource ColorTextBlock}" FontSize="18" FontWeight='Bold' x:Name="txtScore" HorizontalAlignment="Left" Margin="20,220,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.Effect>
+
+                <DropShadowEffect BlurRadius="10"
+                                                  ShadowDepth="1"
+                                                  Direction="-90"
+                                                  Color="White" />
+
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock Foreground="White" Style="{DynamicResource ColorTextBlock}" FontSize="18" x:Name="txtScorePer" HorizontalAlignment="Left" Margin="120,220,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+
+        </TextBlock>
+
+
     </Grid>
 </UserControl>
