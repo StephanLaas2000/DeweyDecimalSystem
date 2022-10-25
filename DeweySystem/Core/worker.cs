@@ -7,7 +7,7 @@ namespace DeweySystem.Core
 {
     public class worker
     {
-       
+       //Textfile paths
         public static string filePathDeweyList = "deweyDecimalList.txt";
         public static string filePathProgressBarIdentifyArea = "userProgressBarIdentifyArea.txt";
         public static string fileReplaceBook = "userProgressBar.txt";
