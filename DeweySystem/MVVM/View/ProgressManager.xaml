@@ -78,7 +78,7 @@
             <ProgressBar Maximum="3" x:Name="pbReplaceProgress" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,93,0,0" VerticalAlignment="Top" Width="250"/>
 
 
-            <ProgressBar x:Name="identifyArea" Maximum="3" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,173,0,0" VerticalAlignment="Top" Width="250"/>
+            <ProgressBar x:Name="identifyArea" Maximum="5" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,173,0,0" VerticalAlignment="Top" Width="250"/>
 
 
             <ProgressBar Maximum="3" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,250,0,0" VerticalAlignment="Top" Width="250"/>
