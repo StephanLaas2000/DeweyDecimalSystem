@@ -20,13 +20,16 @@ namespace DeweySystem.MVVM.View
         //The purpose of this method is to read the value for the progress bar from a textfile , this value is then set into the components of the window
         public void populateProgressBar()
         {
-            double progressBarValueTotal = worker.ReadTextFileProgessBar() + worker.ReadTextFileProgessBarBarIdentifyArea();
+            double progressBarValueTotal = worker.ReadTextFileProgessBar() + worker.ReadTextFileProgessBarBarIdentifyArea() + worker.ReadTextFileProgessBarFindingCallNumber();
             double progressBarValueReplaceBook = worker.ReadTextFileProgessBar();
             double progressBarIdentifyArea = worker.ReadTextFileProgessBarBarIdentifyArea();
+            double progressBarFindingCallNuber = worker.ReadTextFileProgessBarFindingCallNumber();
 
+            txtFindingCallNumbers.Text = $"{Math.Round(progressBarFindingCallNuber / 5 * 100) + "%"}";
             txtProgressBarReplace.Text = $"{Math.Round((progressBarValueReplaceBook / 3 * 100)) + "%"}";
             txtOverall.Text = $"{Math.Round((progressBarValueTotal / 9 * 100)) + "%"}";
             txtProgressIdentifyArea.Text = $"{Math.Round((progressBarIdentifyArea / 5 * 100)) + "%"}";
+            pbFindingCallNumber.Value = progressBarFindingCallNuber;
             identifyArea.Value = progressBarIdentifyArea;
             pbReplaceProgress.Value = progressBarValueReplaceBook;
             pbOverall.Value = (progressBarValueTotal / 9);
@@ -37,9 +40,12 @@ namespace DeweySystem.MVVM.View
         {
             worker.WriteTextFileProgessBar(0);
             worker.WriteTextFileProgessBarBarIdentifyArea(0);
+            worker.WriteTextFileProgessBarFindingCallNumbers(0);
+            txtFindingCallNumbers.Text = "0%";
             txtProgressBarReplace.Text = "0%";
             txtOverall.Text = "0%";
             txtProgressIdentifyArea.Text = "0%";
+            pbFindingCallNumber.Value = 0;
             pbReplaceProgress.Value = 0;
             pbOverall.Value = 0;
             identifyArea.Value = 0;

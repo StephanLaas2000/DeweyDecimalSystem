@@ -81,7 +81,7 @@
             <ProgressBar x:Name="identifyArea" Maximum="5" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,173,0,0" VerticalAlignment="Top" Width="250"/>
 
 
-            <ProgressBar Maximum="3" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,250,0,0" VerticalAlignment="Top" Width="250"/>
+            <ProgressBar Maximum="5" x:Name="pbFindingCallNumber" Style="{DynamicResource ProgressStyle}"  BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,250,0,0" VerticalAlignment="Top" Width="250"/>
 
 
             <ProgressBar Maximum="9" x:Name="pbOverall" Style="{DynamicResource ProgressStyle}" BorderBrush="Black" HorizontalAlignment="Left" Height="30" Margin="365,330,0,0" VerticalAlignment="Top" Width="250"/>
@@ -144,7 +144,7 @@
 
             <TextBlock x:Name="txtProgressBarReplace" Foreground="White" HorizontalAlignment="Left" Margin="480,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
             <TextBlock x:Name="txtProgressIdentifyArea" Foreground="White" HorizontalAlignment="Left" Margin="480,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-            <TextBlock Foreground="White" HorizontalAlignment="Left" Margin="480,255,0,0" TextWrapping="Wrap" Text="TBA" VerticalAlignment="Top"/>
+            <TextBlock x:Name="txtFindingCallNumbers" Foreground="White" HorizontalAlignment="Left" Margin="480,255,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
             <TextBlock x:Name="txtOverall" Foreground="White" HorizontalAlignment="Left" Margin="480,335,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
             <!--<Button x:Name="btnResetReplaceBook" FontSize="15" FontWeight="Bold" Width="60" Height="60" Background="#272537" BorderThickness="0" HorizontalAlignment="Left" Margin="639,73,0,0" VerticalAlignment="Top" Click="Button_resetReplaceBook">

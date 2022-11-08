@@ -278,7 +278,7 @@
             <Image Height="60" Width="60" Source="ViewImages/reset.png"  Stretch="Fill"/>
         </Button>
 
-        <TextBlock HorizontalAlignment="Left" Margin="746,85,0,0" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" Text="Hint" Foreground="white" VerticalAlignment="Top" Width="33">
+        <TextBlock HorizontalAlignment="Left" Margin="344,340,0,0" FontWeight="Bold" FontSize="15" TextWrapping="Wrap" Text="Guide" Foreground="white" VerticalAlignment="Top" Width="42">
             <TextBlock.ToolTip>
                 <ToolTip FontWeight="Bold" FontSize="15" Content="Enter the corresponding number into the squares that match the values inside the second large box"/>
             </TextBlock.ToolTip>

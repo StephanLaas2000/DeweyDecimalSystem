@@ -19,7 +19,7 @@ namespace DeweySystem
 
         private void comingSoonButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Coming Soon !");
+            
         }
     }
 }

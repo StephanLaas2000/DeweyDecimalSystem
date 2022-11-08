@@ -1,0 +1,101 @@
+000-Computer science, information and general works
+030-Encyclopedias and books of facts
+031-Encyclopedias in American English
+032-Encyclopedias in English
+033-Encyclopedias in other Germanic languages
+070-News media, journalism and publishing
+074-Newspapers in France and Monaco
+075-Newspapers in Italy and adjacent islands
+078-Newspapers in Scandinavia
+
+100-Philosophy and psychology
+110-Metaphysics
+114-Space
+115-Time
+116-Change
+180-Ancient, medieval, and Eastern philosophy
+181-Eastern philosophy
+182-Pre-Socratic Greek philosophies
+183-Sophistic, Socratic, related Greek philosophies
+184-Platonic philosophy
+
+200-Religion
+220-The Bible
+221-Old Testament (Tanakh)
+222-Historical books of Old Testament
+223-Poetic books of Old Testament
+240-Christian practice and observance
+241-Christian ethics
+242-Devotional literature
+243-Evangelistic writings for individuals and families
+
+300-Social sciences
+310-Statistics
+314-General statistics of Europe
+315-General statistics of Asia
+316-General statistics of Africa
+370-Education
+373-Secondary education
+374-Adult education
+375-Curricula
+
+400-Language
+430-German and related languages
+431-Writing systems, phonology, phonetics of standard German
+432-Etymology of standard German
+433-Dictionaries of standard German
+490-Other languages
+491-East Indo-European and Celtic languages
+492-Afro-Asiatic languages
+493-Non-Semitic Afro-Asiatic languages
+
+500-Science
+520-Astronomy
+525-Earth (Astronomical geography)
+526-Mathematical geography
+527-Celestial navigation
+590-Animals (Zoology)
+591-Specific topics in natural history of animals
+592-Invertebrates
+593-Miscellaneous marine and seashore invertebrates
+
+600-Technology
+610-Medicine and health
+611-Human anatomy, cytology, histology
+612-Human physiology
+613-Personal health and safety
+630-Agriculture
+634-Orchards, fruits, forestry
+635-Garden crops (Horticulture)
+636-Animal husbandry
+
+700-Arts and recreation
+710-Area planning and landscape architecture
+713-Landscape architecture of trafficways
+714-Water features in landscape architecture
+715-Woody plants in landscape architecture
+790-Outline of sports, games and entertainment
+795-Games of chance
+796-Athletic and outdoor sports and games
+797-Aquatic and air sports
+
+800-Literature
+800-Literature, rhetoric and criticism
+805-Serial publications
+806-Organizations and management
+807-Education, research, related topics
+880-Classical and modern Greek literatures
+881-Classical Greek poetry
+882-Classical Greek drama
+883-Classical Greek epic poetry and fiction
+
+900-History and geography
+960-History of Africa
+966-West Africa and offshore islands
+967-Central Africa and offshore islands
+968-South Africa & southern Africa
+970-History of North America
+976-South central United States
+977-North central United States
+978-Western United States
+

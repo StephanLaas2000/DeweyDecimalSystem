@@ -11,6 +11,7 @@ namespace DeweySystem.Core
         public static string filePathDeweyList = "deweyDecimalList.txt";
         public static string filePathProgressBarIdentifyArea = "userProgressBarIdentifyArea.txt";
         public static string fileReplaceBook = "userProgressBar.txt";
+        public static string findCallNumber = "userProgressBarFindingCallNumber.txt";
 
         //This method is to read all data from the dewey decimal list, we use this by "readAllLines"
         public static void ReadTextFileDeweyList()
@@ -35,6 +36,27 @@ namespace DeweySystem.Core
             double progressValue = 0;
 
             string[] lines = System.IO.File.ReadAllLines(fileReplaceBook);
+
+            foreach (string line in lines)
+            {
+                progressValue = Convert.ToDouble(line);
+            }
+
+            if (countMethod == 2)
+            {
+                File.Create(fileReplaceBook).Close();
+            }
+
+            return progressValue;
+        }
+
+        public static double ReadTextFileProgessBarFindingCallNumber()
+        {
+            int countMethod = +1;
+
+            double progressValue = 0;
+
+            string[] lines = System.IO.File.ReadAllLines(findCallNumber);
 
             foreach (string line in lines)
             {
@@ -74,6 +96,11 @@ namespace DeweySystem.Core
         public static void WriteTextFileProgessBar(double value)
         {
             File.WriteAllTextAsync(fileReplaceBook, value.ToString());
+        }
+
+        public static void WriteTextFileProgessBarFindingCallNumbers(double value)
+        {
+            File.WriteAllTextAsync(findCallNumber, value.ToString());
         }
 
         public static void WriteTextFileProgessBarBarIdentifyArea(double value)
@@ -120,5 +147,36 @@ namespace DeweySystem.Core
                 {"900", "History & geography"},
             };
         }
+
+        public static List<List<CallNumberLevels>> ReadFindingCallNumbersTextFile()
+        {
+            StreamReader file = new StreamReader("findingCallNumbers.txt");
+
+            List<CallNumberLevels> output = new List<CallNumberLevels>();
+            List<List<CallNumberLevels>> testy = new List<List<CallNumberLevels>>();
+
+            string line;
+
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.Equals(""))
+                {
+                    testy.Add(output);
+                    output = new List<CallNumberLevels>();
+                }
+                else
+                {
+                    string[] ListInfo = line.Split('-');
+                    output.Add(new CallNumberLevels { Number = ListInfo[0], Description = ListInfo[1] });
+                }
+
+            }
+
+            file.Close();
+
+            return testy;
+
+        }
+
     }
 }
